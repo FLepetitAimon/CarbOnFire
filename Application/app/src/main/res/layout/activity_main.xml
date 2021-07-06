@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.MainActivity">
+
+    <Button
+        android:id="@+id/device_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/cardview_shadow_start_color"
+        android:padding="20dp"
+        android:text="Devices" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:text="Température"
+        android:textAlignment="center"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/AfficheurCO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:background="#AAAAAA"
+        android:text="0 ppm"
+        android:textSize="50dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:text="Pression"
+        android:textAlignment="center"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/AfficheurCO2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:background="#AAAAAA"
+        android:text="0 ppm"
+        android:textSize="50dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:text="Altitude"
+
+        android:textAlignment="center"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/AfficheurTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:background="#AAAAAA"
+        android:text="0 °C"
+        android:textSize="50dp"
+        />
+
+
+
+
+</LinearLayout>
+
+
