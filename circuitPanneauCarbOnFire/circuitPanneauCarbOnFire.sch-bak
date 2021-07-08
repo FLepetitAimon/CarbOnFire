@@ -14,50 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Switch:SW_DIP_x01 SW1
-U 1 1 60E42BF5
-P 1800 2300
-F 0 "SW1" H 1800 2567 50  0000 C CNN
-F 1 "SW_DIP_x01" H 1800 2476 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W7.62mm_P2.54mm" H 1800 2300 50  0001 C CNN
-F 3 "~" H 1800 2300 50  0001 C CNN
-	1    1800 2300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_DIP_x01 SW2
-U 1 1 60E441AA
-P 5650 1350
-F 0 "SW2" H 5650 1617 50  0000 C CNN
-F 1 "SW_DIP_x01" H 5650 1526 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W7.62mm_P2.54mm" H 5650 1350 50  0001 C CNN
-F 3 "~" H 5650 1350 50  0001 C CNN
-	1    5650 1350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:LED D2
-U 1 1 60E448EE
-P 7150 1950
-F 0 "D2" H 7143 1695 50  0000 C CNN
-F 1 "LED" H 7143 1786 50  0000 C CNN
-F 2 "LED_THT:LED_D5.0mm_IRGrey" H 7150 1950 50  0001 C CNN
-F 3 "~" H 7150 1950 50  0001 C CNN
-	1    7150 1950
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:LED D1
-U 1 1 60E44EF6
-P 1050 1900
-F 0 "D1" V 997 1980 50  0000 L CNN
-F 1 "LED" V 1088 1980 50  0000 L CNN
-F 2 "LED_THT:LED_D5.0mm_IRGrey" H 1050 1900 50  0001 C CNN
-F 3 "~" H 1050 1900 50  0001 C CNN
-	1    1050 1900
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:R R1
 U 1 1 60E45EAD
 P 1050 2450
@@ -80,59 +36,15 @@ F 3 "~" H 6600 1950 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L LibrairieCarbonEye:molex2pin UFusible1
-U 1 1 60E4AA02
-P 1550 850
-F 0 "UFusible1" H 1928 451 50  0000 L CNN
-F 1 "molex2pin" H 1928 360 50  0000 L CNN
-F 2 "Connector_Molex:Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical" H 1550 850 50  0001 C CNN
-F 3 "" H 1550 850 50  0001 C CNN
-	1    1550 850 
-	1    0    0    -1  
-$EndComp
-$Comp
-L LibrairieCarbonEye:molex2pin Uarduino1
+L circuitPanneauCarbOnFire-rescue:molex2pin-LibrairieCarbonEye UalimArduino1
 U 1 1 60E4B8DB
 P 1050 4050
-F 0 "Uarduino1" H 672 3558 50  0000 R CNN
+F 0 "UalimArduino1" H 672 3558 50  0000 R CNN
 F 1 "molex2pin" H 672 3649 50  0000 R CNN
 F 2 "Connector_Molex:Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical" H 1050 4050 50  0001 C CNN
 F 3 "" H 1050 4050 50  0001 C CNN
 	1    1050 4050
 	-1   0    0    1   
-$EndComp
-$Comp
-L LibrairieCarbonEye:molex2pin Ualphasense1
-U 1 1 60E4BD88
-P 2600 4000
-F 0 "Ualphasense1" H 2222 3508 50  0000 R CNN
-F 1 "molex2pin" H 2222 3599 50  0000 R CNN
-F 2 "Connector_Molex:Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical" H 2600 4000 50  0001 C CNN
-F 3 "" H 2600 4000 50  0001 C CNN
-	1    2600 4000
-	-1   0    0    1   
-$EndComp
-$Comp
-L LibrairieCarbonEye:connecteurCC12V UIn1
-U 1 1 60E4C6A5
-P 2850 900
-F 0 "UIn1" H 2900 1006 50  0000 C CNN
-F 1 "connecteurCC12V" H 2900 915 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W7.62mm_P2.54mm" H 2850 900 50  0001 C CNN
-F 3 "" H 2850 900 50  0001 C CNN
-	1    2850 900 
-	1    0    0    -1  
-$EndComp
-$Comp
-L LibrairieCarbonEye:connecteurCC12V Uout1
-U 1 1 60E4D0FD
-P 6650 850
-F 0 "Uout1" H 6700 956 50  0000 C CNN
-F 1 "connecteurCC12V" H 6700 865 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_DIP_SPSTx01_Slide_9.78x4.72mm_W7.62mm_P2.54mm" H 6650 850 50  0001 C CNN
-F 3 "" H 6650 850 50  0001 C CNN
-	1    6650 850 
-	1    0    0    -1  
 $EndComp
 $Comp
 L pspice:DIODE DRoueLibre1
@@ -161,31 +73,13 @@ Wire Wire Line
 Wire Wire Line
 	7000 1950 6750 1950
 Wire Wire Line
-	2750 1350 2750 1600
-Wire Wire Line
-	2750 1600 2150 1600
-Wire Wire Line
 	1050 2900 1050 2600
 Wire Wire Line
-	5950 1350 6250 1350
-Wire Wire Line
-	6550 1350 6550 1300
-Wire Wire Line
 	4750 1250 4750 950 
-Wire Wire Line
-	4750 950  6650 950 
-Wire Wire Line
-	6650 950  6650 1200
 Wire Wire Line
 	6250 1350 6250 1950
 Wire Wire Line
 	6250 1950 6450 1950
-Connection ~ 6250 1350
-Wire Wire Line
-	6250 1350 6550 1350
-Wire Wire Line
-	7300 950  7300 1950
-Connection ~ 6650 950 
 Wire Wire Line
 	6250 1950 6250 2350
 Wire Wire Line
@@ -195,11 +89,6 @@ Wire Wire Line
 Connection ~ 6250 1950
 Wire Wire Line
 	7900 1600 7900 1400
-Wire Wire Line
-	6650 950  7300 950 
-Connection ~ 7300 950 
-Wire Wire Line
-	7300 950  7900 950 
 Wire Wire Line
 	8400 1700 8400 1400
 Wire Wire Line
@@ -214,17 +103,6 @@ Wire Wire Line
 Connection ~ 7900 2100
 Wire Wire Line
 	7900 2100 7900 2000
-Connection ~ 2850 1250
-Wire Wire Line
-	1750 1350 2300 1350
-Wire Wire Line
-	2300 1350 2300 1250
-Wire Wire Line
-	2300 1250 2850 1250
-Wire Wire Line
-	2150 1600 2150 2300
-Wire Wire Line
-	2150 2300 2100 2300
 Wire Wire Line
 	1050 2900 1250 2900
 Wire Wire Line
@@ -232,42 +110,276 @@ Wire Wire Line
 Wire Wire Line
 	1450 2300 1500 2300
 Wire Wire Line
-	1050 1750 1350 1750
-Wire Wire Line
 	1350 1750 1350 1500
 Wire Wire Line
-	850  3550 850  3200
-Wire Wire Line
 	850  1500 1350 1500
-Connection ~ 1350 1500
-Wire Wire Line
-	1350 1500 1350 1350
-Wire Wire Line
-	1250 3550 1250 3100
 Connection ~ 1250 2900
 Wire Wire Line
 	1250 2900 1450 2900
+$Comp
+L power:GND #PWR0101
+U 1 1 60E6BC39
+P 3450 1250
+F 0 "#PWR0101" H 3450 1000 50  0001 C CNN
+F 1 "GND" H 3455 1077 50  0000 C CNN
+F 2 "" H 3450 1250 50  0001 C CNN
+F 3 "" H 3450 1250 50  0001 C CNN
+	1    3450 1250
+	-1   0    0    1   
+$EndComp
 Wire Wire Line
-	2400 3500 2400 3200
+	3450 1250 4750 1250
+$Comp
+L Connector:Screw_Terminal_01x14 J1
+U 1 1 60E6D455
+P 5250 2800
+F 0 "J1" V 5375 2746 50  0000 C CNN
+F 1 "Screw_Terminal_01x14" V 5466 2746 50  0000 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-14-5.08_1x14_P5.08mm_Horizontal" H 5250 2800 50  0001 C CNN
+F 3 "~" H 5250 2800 50  0001 C CNN
+	1    5250 2800
+	0    1    1    0   
+$EndComp
+Text GLabel 2000 2000 0    50   Input ~ 0
+SwitchIn1
+Text GLabel 2700 2300 2    50   Input ~ 0
+SwitchIn2
 Wire Wire Line
-	2400 3200 850  3200
-Connection ~ 850  3200
+	2000 2000 2150 2000
+Text GLabel 1350 1750 2    50   Input ~ 0
+AnoLedIn
+Text GLabel 1050 2050 1    50   Input ~ 0
+CatLedIn
+Text GLabel 3450 1250 3    50   Input ~ 0
+gndIn
+Text GLabel 6250 1350 0    50   Input ~ 0
+SwitchOut2
+Text GLabel 6250 1350 2    50   Input ~ 0
+VccOut
+Text GLabel 6750 950  1    50   Input ~ 0
+gndOut
+Text GLabel 7000 1950 2    50   Input ~ 0
+CatLedOut
+Text GLabel 7400 950  1    50   Input ~ 0
+AnoLedOut
+Text GLabel 2450 2300 0    50   Input ~ 0
+Fusible2
 Wire Wire Line
-	850  3200 850  1500
+	4750 950  7900 950 
+$Comp
+L power:GND #PWR0102
+U 1 1 60E7B783
+P 2400 1000
+F 0 "#PWR0102" H 2400 750 50  0001 C CNN
+F 1 "GND" H 2405 827 50  0000 C CNN
+F 2 "" H 2400 1000 50  0001 C CNN
+F 3 "" H 2400 1000 50  0001 C CNN
+	1    2400 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 60E7C0D7
+P 2400 850
+F 0 "#FLG0101" H 2400 925 50  0001 C CNN
+F 1 "PWR_FLAG" H 2400 1023 50  0000 C CNN
+F 2 "" H 2400 850 50  0001 C CNN
+F 3 "~" H 2400 850 50  0001 C CNN
+	1    2400 850 
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	2800 3500 2800 3100
+	2400 850  2400 1000
+$Comp
+L Connector:Conn_01x10_Male J4
+U 1 1 60E936C7
+P 9900 3000
+F 0 "J4" V 9827 2928 50  0000 C CNN
+F 1 "Conn_01x10_Male" V 9736 2928 50  0000 C CNN
+F 2 "Connector_Molex:Molex_Micro-Latch_53253-1070_1x10_P2.00mm_Vertical" H 9900 3000 50  0001 C CNN
+F 3 "~" H 9900 3000 50  0001 C CNN
+	1    9900 3000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:4P4C J2
+U 1 1 60E96BCA
+P 8300 3500
+F 0 "J2" H 8357 3967 50  0000 C CNN
+F 1 "4P4C" H 8357 3876 50  0000 C CNN
+F 2 "Connector:NS-Tech_Grove_1x04_P2mm_Vertical" V 8300 3550 50  0001 C CNN
+F 3 "~" V 8300 3550 50  0001 C CNN
+	1    8300 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:4P4C J3
+U 1 1 60E97CCE
+P 8300 4300
+F 0 "J3" H 8357 4767 50  0000 C CNN
+F 1 "4P4C" H 8357 4676 50  0000 C CNN
+F 2 "Connector:NS-Tech_Grove_1x04_P2mm_Vertical" V 8300 4350 50  0001 C CNN
+F 3 "~" V 8300 4350 50  0001 C CNN
+	1    8300 4300
+	1    0    0    -1  
+$EndComp
+Text GLabel 10200 2800 1    50   Input ~ 0
+A1
+Text GLabel 10100 2800 1    50   Input ~ 0
+A0
+$Comp
+L power:GND #PWR0103
+U 1 1 60EA57CA
+P 8700 3600
+F 0 "#PWR0103" H 8700 3350 50  0001 C CNN
+F 1 "GND" H 8705 3427 50  0000 C CNN
+F 2 "" H 8700 3600 50  0001 C CNN
+F 3 "" H 8700 3600 50  0001 C CNN
+	1    8700 3600
+	1    0    0    -1  
+$EndComp
+Text GLabel 9500 2800 1    50   Input ~ 0
+Vdd
+Text GLabel 9600 2800 1    50   Input ~ 0
+Gndgrove
+Text GLabel 9700 2800 1    50   Input ~ 0
+SCL
+Text GLabel 9800 2800 1    50   Input ~ 0
+SDA
+Text GLabel 8700 3500 2    50   Input ~ 0
+Vdd
+Text GLabel 8700 3600 2    50   Input ~ 0
+Gndgrove
+Text GLabel 8700 3300 2    50   Input ~ 0
+SCL
+Text GLabel 8700 3400 2    50   Input ~ 0
+SDA
+Text GLabel 8700 4100 2    50   Input ~ 0
+SCL
+Text GLabel 8700 4200 2    50   Input ~ 0
+SDA
+Text GLabel 8700 4300 2    50   Input ~ 0
+Vdd
+Text GLabel 8700 4400 2    50   Input ~ 0
+Gndgrove
+NoConn ~ 9900 2800
+NoConn ~ 10000 2800
+NoConn ~ 10300 2800
+NoConn ~ 10400 2800
+$Comp
+L Connector:4P4C J6
+U 1 1 60EBE65B
+P 4500 4000
+F 0 "J6" H 4557 4467 50  0000 C CNN
+F 1 "4P4C" H 4557 4376 50  0000 C CNN
+F 2 "Connector_Molex:Molex_SL_171971-0004_1x04_P2.54mm_Vertical" V 4500 4050 50  0001 C CNN
+F 3 "~" V 4500 4050 50  0001 C CNN
+	1    4500 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x02_Male J5
+U 1 1 60EBF1B5
+P 4450 4600
+F 0 "J5" H 4558 4781 50  0000 C CNN
+F 1 "Conn_01x02_Male" H 4558 4690 50  0000 C CNN
+F 2 "Connector_Molex:Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical" H 4450 4600 50  0001 C CNN
+F 3 "~" H 4450 4600 50  0001 C CNN
+	1    4450 4600
+	1    0    0    -1  
+$EndComp
+Text GLabel 4900 3800 2    50   Input ~ 0
+SwitchIn2
+Text GLabel 4900 3900 2    50   Input ~ 0
+Fusible1
 Wire Wire Line
-	2800 3100 1250 3100
-Connection ~ 1250 3100
+	850  1500 850  3550
 Wire Wire Line
-	1250 3100 1250 2900
+	1250 2900 1250 3550
+$Comp
+L Device:R R3
+U 1 1 60EC06F8
+P 5650 4000
+F 0 "R3" H 5580 3954 50  0000 R CNN
+F 1 "220" H 5580 4045 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5580 4000 50  0001 C CNN
+F 3 "~" H 5650 4000 50  0001 C CNN
+	1    5650 4000
+	-1   0    0    1   
+$EndComp
 Wire Wire Line
-	2850 1250 4750 1250
+	4900 4000 5450 4000
 Wire Wire Line
-	2750 1600 5350 1600
+	5450 4000 5450 3850
 Wire Wire Line
-	5350 1600 5350 1350
-Connection ~ 2750 1600
-NoConn ~ 2950 1350
-NoConn ~ 6750 1300
+	5450 3850 5650 3850
+Wire Wire Line
+	5650 4150 4900 4150
+Wire Wire Line
+	4900 4150 4900 4100
+Text GLabel 5550 4150 3    50   Input ~ 0
+A1
+$Comp
+L Device:R R4
+U 1 1 60EC1C19
+P 5350 4850
+F 0 "R4" H 5280 4804 50  0000 R CNN
+F 1 "220" H 5280 4895 50  0000 R CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5280 4850 50  0001 C CNN
+F 3 "~" H 5350 4850 50  0001 C CNN
+	1    5350 4850
+	0    -1   -1   0   
+$EndComp
+Text GLabel 4650 4600 2    50   Input ~ 0
+SwitchIn2
+Wire Wire Line
+	4650 4700 5200 4700
+Wire Wire Line
+	5200 4700 5200 4850
+Wire Wire Line
+	5500 4850 5800 4850
+Text GLabel 5800 4850 2    50   Input ~ 0
+Fusible1
+Text GLabel 5200 4700 2    50   Input ~ 0
+A0
+Text GLabel 1350 1500 2    50   Input ~ 0
+gndIn
+Text GLabel 1500 2300 2    50   Input ~ 0
+Fusible1
+Text GLabel 2150 1600 2    50   Input ~ 0
+SwitchOut1
+Text GLabel 2150 1600 0    50   Input ~ 0
+VccIn
+Wire Wire Line
+	2150 2000 2150 1600
+Text GLabel 5450 2600 1    50   Input ~ 0
+Fusible2
+Text GLabel 5850 2600 1    50   Input ~ 0
+Fusible1
+Text GLabel 5250 2600 1    50   Input ~ 0
+SwitchOut2
+Text GLabel 5050 2600 1    50   Input ~ 0
+SwitchOut1
+Text GLabel 4850 2600 1    50   Input ~ 0
+AnoLedOut
+Text GLabel 5650 2600 1    50   Input ~ 0
+CatLedOut
+Text GLabel 4750 2600 1    50   Input ~ 0
+gndOut
+Text GLabel 5350 2600 1    50   Input ~ 0
+VccOut
+Text GLabel 5550 2600 1    50   Input ~ 0
+SwitchIn2
+Text GLabel 5150 2600 1    50   Input ~ 0
+SwitchIn1
+Text GLabel 4650 2600 1    50   Input ~ 0
+AnoLedIn
+Text GLabel 5750 2600 1    50   Input ~ 0
+CatLedIn
+Text GLabel 4550 2600 1    50   Input ~ 0
+gndIn
+Text GLabel 4950 2600 1    50   Input ~ 0
+VccIn
+Wire Wire Line
+	2450 2300 2700 2300
 $EndSCHEMATC
