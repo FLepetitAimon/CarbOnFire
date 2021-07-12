@@ -1,3 +1,5 @@
+//Librairie
+
 #include <SD.h>
 #include <BMP280_DEV.h>
 #include <MD_DS1307.h>
@@ -6,24 +8,29 @@
 
 
 
+// Constantes 
+
 #define DATA_DIR "DONNEE"
 #define TAILLE_TABLEAU 11
 #define R_CO 100  //Resistance de Mesure du CO
 #define R_CO2 220 //Resistance de Mesure du CO2
 #define COPin 0   // Pin de lecture du CO
 #define CO2Pin 1  // Pin de lecture du CO2
+#define PERIODE_ECHANTILLONAGE 500 // en millisecondes
+
+
 
 //Variables 
 
 Adafruit_ADS1115 ads;
-
 float temperature, pressure, altitude, CO2, CO;
 double Tab_Mesure[TAILLE_TABLEAU];
-
 File donnee;
 BMP280_DEV bmp280;   // Instantiate (create) a BMP280_DEV object and set-up for I2C operation (address 0x77)
 
 
+
+//Fonctions
 
 float ConcentrationCO() {
   
@@ -84,6 +91,10 @@ void EnvoieBluetooth(double tab[TAILLE_TABLEAU]) {
 }
 
 
+// ----------------------------------------------------------------------------------------------------------------------
+// ------------- Début Programme ----------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
+
 
 void setup() {
 
@@ -109,7 +120,7 @@ void setup() {
   if (!SD.exists(DATA_DIR)) {
     SD.mkdir(DATA_DIR);
     donnee = SD.open("DONNEE/Data.txt", FILE_WRITE);
-    donnee.println("Temp ,press , alti ,  CO,  CO2,  date               ");
+    donnee.println("Temp,press,alti,CO,CO2,date");
     donnee.close();
   }
 }
@@ -117,12 +128,12 @@ void setup() {
 void loop() {
 
 
-// ------------ Attente des mesures du bmp280 et vérification de la présence d'une carte SD -----------------------------
+// ------------ Vérification de la présence d'une carte SD et acquiqition des mesures du BMP ----------------------------
 
-  while (!bmp280.getMeasurements(temperature, pressure, altitude));  // Check if the measurement is complete
-  RTC.readTime();
   while (!SD.begin());
-
+  bmp280.getCurrentMeasurements(temperature, pressure, altitude);  // Check if the measurement is complete
+  RTC.readTime();
+  
 
 // ------------ Sauvegarde des mesures dans un tableau TabMesure --------------------------------------------------------
 
@@ -145,5 +156,6 @@ void loop() {
 
   EcritureCarteSD(Tab_Mesure);
   EnvoieBluetooth(Tab_Mesure);
+  delay(PERIODE_ECHANTILLONAGE);
 
 }
