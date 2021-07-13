@@ -45,6 +45,7 @@ public class ActivityDevice extends AppCompatActivity {
     ListView listViewBtDevice;
     List<BluetoothDevice> listBtDevice = new ArrayList<>();
     private  BluetoothDevice mmDevice;
+    BluetoothAdapter bluetoothAdapter;
 
 
     @Override
@@ -52,42 +53,25 @@ public class ActivityDevice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
 
+        setResult(0);
+
 
         listViewBtDevice = (ListView) findViewById(R.id.DeviceList_id);
         listViewBtDevice.setAdapter(new DeviceItemAdapter(this, listBtDevice));
 
-        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             Toast.makeText(ActivityDevice.this, "Bluetooth is not supported on this device", Toast.LENGTH_LONG).show();
         }
 
         if (!bluetoothAdapter.isEnabled()) {
-
-            ActivityResultLauncher<Intent> BtDiscoveryActivityResultLauncher = registerForActivityResult(
-                    new ActivityResultContracts.StartActivityForResult(),
-                    new ActivityResultCallback<ActivityResult>() {
-                        @Override
-                        public void onActivityResult(ActivityResult result) {
-                            if (result.getResultCode() == Activity.RESULT_OK) {
-                                // There are no request codes
-                                Intent data = result.getData();
-                                if (bluetoothAdapter.isEnabled()) {
-                                    if (bluetoothAdapter.startDiscovery())
-                                        Toast.makeText(ActivityDevice.this, "searching for device", Toast.LENGTH_LONG).show();
-                                    else
-                                        Toast.makeText(ActivityDevice.this, "Bluetooth device research failed", Toast.LENGTH_LONG).show();
-                                }
-                            }
-
-                        }
-
-                    });
-
-
-
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            BtDiscoveryActivityResultLauncher.launch(enableBtIntent);
+            Intent BtDiscoveryActivity = new Intent (BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            BtDiscoveryActivityResultLauncher.launch(BtDiscoveryActivity);
         }
+
+
+
+
 
         else {
 
@@ -105,7 +89,6 @@ public class ActivityDevice extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                bluetoothAdapter.cancelDiscovery();
                 mmDevice = listBtDevice.get(position);
                 Intent intent = new Intent();
                 intent.putExtra("MyDEVICE", mmDevice);
@@ -117,6 +100,29 @@ public class ActivityDevice extends AppCompatActivity {
         });
 
     }
+
+    ActivityResultLauncher<Intent> BtDiscoveryActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK) {
+                        // There are no request codes
+
+                            if (bluetoothAdapter.startDiscovery())
+                                Toast.makeText(ActivityDevice.this, "searching for device now", Toast.LENGTH_LONG).show();
+                            else
+                                Toast.makeText(ActivityDevice.this, "Bluetooth device research failed", Toast.LENGTH_LONG).show();
+
+                        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+                        registerReceiver(receiver, filter);
+                    }
+
+                }
+
+
+
+            });
 
 
     // Create a BroadcastReceiver for ACTION_FOUND.
@@ -137,7 +143,7 @@ public class ActivityDevice extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        bluetoothAdapter.cancelDiscovery();
         unregisterReceiver(receiver);
     }
 

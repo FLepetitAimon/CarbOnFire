@@ -20,30 +20,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="130dp"
         android:orientation="horizontal"
         >
 
         <ImageView
-            android:layout_width="185dp"
-            android:layout_height="140dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="4dp"
             android:src="@drawable/backpack"
+
             ></ImageView>
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            >
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/connectee_logo"
-                android:id="@+id/ImageViewConnecteeLogo">
+                android:src="@drawable/icone_deconnecter"
+                android:id="@+id/ImageViewConnecteeLogo"
+            android:layout_marginLeft="50dp"
+                />
 
 
-            </ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/ImageViewConnecteeLogo"
+                android:src="@drawable/logo_double_fleche"
+                android:id="@+id/DoubleFleche"
+                android:scaleX="2
+"
+                ></ImageView>
 
         <TextView
             android:layout_width="match_parent"
@@ -52,14 +67,19 @@
             android:textAlignment="center"
             android:id="@+id/TextViewEtatDeConnexion"
             android:textSize="15dp"
-            android:layout_marginTop="15dp"
-            android:text="connecté"
-            android:layout_below="@+id/ImageViewConnecteeLogo"
+            android:layout_marginTop="2dp"
+            android:text="Not Connected"
+            android:layout_below="@+id/DoubleFleche"
             ></TextView>
 
 
         </RelativeLayout>
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/phone_item"
+            />
 
     </LinearLayout>
 
@@ -79,7 +99,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp">
+        android:layout_marginTop="60dp">
 
         <ImageView
             android:layout_width="80dp"

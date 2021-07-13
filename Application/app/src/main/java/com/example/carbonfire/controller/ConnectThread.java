@@ -15,7 +15,7 @@ import java.util.UUID;
 import static android.icu.lang.UProperty.NAME;
 
 public class ConnectThread extends Thread implements Runnable {
-    private final BluetoothSocket mmSocket;
+    private BluetoothSocket mmSocket = null;
     private final BluetoothDevice mmDevice;
     private UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
     BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -30,14 +30,19 @@ public class ConnectThread extends Thread implements Runnable {
 
 
 
+
+
         try {
             // Get a BluetoothSocket to connect with the given BluetoothDevice.
             // MY_UUID is the app's UUID string, also used in the server code.
             tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
         } catch (IOException e) {
-            //Log.e(TAG, "Socket's create() method failed", e);
+            Message msg = mmhandler.obtainMessage();
+            msg.arg1=2;
+            mmhandler.sendMessage(msg);
         }
         mmSocket = tmp;
+
     }
 
     public void run() {
@@ -57,6 +62,9 @@ public class ConnectThread extends Thread implements Runnable {
 
         } catch (IOException connectException) {
             // Unable to connect; close the socket and return.
+            Message msg = mmhandler.obtainMessage();
+            msg.arg1=2;
+            mmhandler.sendMessage(msg);
             try {
                 mmSocket.close();
             } catch (IOException closeException) {
@@ -65,9 +73,6 @@ public class ConnectThread extends Thread implements Runnable {
             return;
         }
 
-        // The connection attempt succeeded. Perform work associated with
-        // the connection in a separate thread.
-        //manageMyConnectedSocket(mmSocket);
     }
 
     public BluetoothSocket GetSocket(){

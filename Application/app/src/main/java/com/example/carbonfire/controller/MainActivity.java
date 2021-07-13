@@ -1,5 +1,7 @@
 package com.example.carbonfire.controller;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
@@ -10,18 +12,23 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,14 +44,17 @@ public class MainActivity extends AppCompatActivity {
     private Button deviceBtn ;
     private boolean shouldShowRequestPermissionRationale = true;
 
+    AnimatedVectorDrawable animationRotation;
+
     public BluetoothSocket mmSocket;
     public BluetoothDevice mmDevice;
     public final static String ACTION_PERSO = "sdz.chapitreTrois.intent.action.PERSO";
+
     MyBluetoothtService.ConnectedThread mmConnectedThread;
-    ConnectThread mmConectThread ;
-    TextView afficheurCO;
-    TextView afficheurCO2;
-    TextView afficheurTemp;
+    ConnectThread mmConnectThread ;
+    TextView afficheurCO2, afficheurTemp, afficheurCO, afficheurEtatConnexion, afficheurNomDevice;
+    ImageView connexionImageView;
+
     private byte[] mmBuffer = new byte[1024];
     private int NbBytesRecu;
     private int NbBytesRecu_aux = 0;
@@ -57,18 +67,26 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
 
-            afficheurCO = (TextView) findViewById(R.id.AfficheurCO);
-            afficheurCO2 = (TextView) findViewById(R.id.AfficheurCO2);
-            afficheurTemp = (TextView) findViewById(R.id.AfficheurTemp);
+
 
             super.handleMessage(msg);
             // L'avancement se situe dans msg.arg1
             if(msg.arg1==0){
                 Toast.makeText(MainActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
-                mmSocket= mmConectThread.GetSocket();
+                connexionImageView.setImageResource(R.drawable.connectee_logo);
+                connexionImageView.clearAnimation();
+                afficheurEtatConnexion.setText("connected");
+                mmSocket= mmConnectThread.GetSocket();
 
                 mmConnectedThread = new MyBluetoothtService.ConnectedThread(mmSocket,mHandler);
                 mmConnectedThread.start();
+            }
+
+            if(msg.arg1==2){
+                connexionImageView.setImageResource(R.drawable.icone_deconnecter);
+                connexionImageView.clearAnimation();
+                afficheurEtatConnexion.setText("not connected");
+                afficheurNomDevice.setText("Connexion failed");
             }
 
            if(msg.arg1==1){
@@ -105,6 +123,13 @@ public class MainActivity extends AppCompatActivity {
                }
 
            }
+           if (msg.arg1 == 3){
+               connexionImageView.setImageResource(R.drawable.icone_deconnecter);
+               connexionImageView.clearAnimation();
+               afficheurEtatConnexion.setText("not connected");
+               afficheurNomDevice.setText("Connexion lost");
+               mmConnectedThread.cancel();
+           }
 
 
         }
@@ -118,9 +143,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        MySharedViawModel mmSharedViawModel = new ViewModelProvider(this).get(MySharedViawModel.class);
         setContentView(R.layout.activity_main);
+
+
         deviceBtn = (Button) findViewById(R.id.device_btn);
+        afficheurCO = (TextView) findViewById(R.id.AfficheurCO);
+        afficheurCO2 = (TextView) findViewById(R.id.AfficheurCO2);
+        afficheurTemp = (TextView) findViewById(R.id.AfficheurTemp);
+        afficheurEtatConnexion = (TextView) findViewById(R.id.TextViewEtatDeConnexion);
+        afficheurNomDevice = (TextView) findViewById(R.id.TextViewDeviceName);
+
+        connexionImageView = (ImageView) findViewById(R.id.ImageViewConnecteeLogo);
 
         if (ContextCompat.checkSelfPermission(
                 MainActivity.this, Manifest.permission.BLUETOOTH_ADMIN) ==
@@ -151,28 +184,46 @@ public class MainActivity extends AppCompatActivity {
         deviceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!(mmSocket== null)){
+                    mmConnectThread.cancel();
+                }
                 Intent ActivityDevice = new Intent (MainActivity.this, ActivityDevice.class);
-
-                startActivityForResult(ActivityDevice, REQUEST_CODE1);
+                DeviceActivityResultLauncher.launch(ActivityDevice);
             }
+
         });
 
 
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==1){
-            Bundle bundle = data.getExtras();
-            mmDevice = (BluetoothDevice) bundle.get("MyDEVICE");
+    ActivityResultLauncher<Intent> DeviceActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == 1) {
+                        Bundle bundle = result.getData().getExtras();
+                        mmDevice = (BluetoothDevice) bundle.get("MyDEVICE");
 
-            mmConectThread = new ConnectThread(mmDevice,mHandler);
-            mmConectThread.start();
+                        connexionImageView.setImageResource(R.drawable.icone_chargement);
+                        connexionImageView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotation) );
 
-        }
-    }
+
+                        afficheurEtatConnexion.setText("Connexion in progress ...");
+                        afficheurNomDevice.setText(mmDevice.getName());
+
+                        mmConnectThread = new ConnectThread(mmDevice,mHandler);
+                        mmConnectThread.start();
+
+                    }
+                    else if (result.getResultCode()==0) Toast.makeText(MainActivity.this, "aucun device selectionné", Toast.LENGTH_LONG).show();
+                }
+
+
+
+            });
+
 
     @Override
     protected void onResume() {

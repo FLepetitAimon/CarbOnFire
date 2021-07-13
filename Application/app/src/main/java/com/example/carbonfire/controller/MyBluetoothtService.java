@@ -83,20 +83,29 @@ public class MyBluetoothtService {
 
             // Keep listening to the InputStream until an exception occurs.
             while (true) {
-                try {
-                    // Read from the InputStream.
-                    numBytes = mmInStream.read(mmBuffer);
-                    // Send the obtained bytes to the UI activity.
+                if (!mmSocket.isConnected()){
                     Message msg = mmhandler.obtainMessage();
-                    msg.arg1=1;
-                    bundle.putByteArray("TrameBluetooth", mmBuffer);
-                    bundle.putInt("NombreBytesRecu", numBytes);
-                    msg.setData(bundle);
+                    msg.arg1=3;
                     mmhandler.sendMessage(msg);
-
-                } catch (IOException e) {
-                    Log.d(TAG, "Input stream was disconnected", e);
                     break;
+                    
+                }
+                else {
+                    try {
+                        // Read from the InputStream.
+                        numBytes = mmInStream.read(mmBuffer);
+                        // Send the obtained bytes to the UI activity.
+                        Message msg = mmhandler.obtainMessage();
+                        msg.arg1 = 1;
+                        bundle.putByteArray("TrameBluetooth", mmBuffer);
+                        bundle.putInt("NombreBytesRecu", numBytes);
+                        msg.setData(bundle);
+                        mmhandler.sendMessage(msg);
+
+                    } catch (IOException e) {
+                        Log.d(TAG, "Input stream was disconnected", e);
+                        break;
+                    }
                 }
             }
         }
