@@ -87,7 +87,7 @@ public class MyBluetoothtService {
                     Message msg = mmhandler.obtainMessage();
                     msg.arg1=3;
                     mmhandler.sendMessage(msg);
-                    break;
+
                     
                 }
                 else {
@@ -104,6 +104,9 @@ public class MyBluetoothtService {
 
                     } catch (IOException e) {
                         Log.d(TAG, "Input stream was disconnected", e);
+                        Message msg = mmhandler.obtainMessage();
+                        msg.arg1=3;
+                        mmhandler.sendMessage(msg);
                         break;
                     }
                 }
@@ -132,6 +135,7 @@ public class MyBluetoothtService {
                 mmhandler.sendMessage(writeErrorMsg);
             }
         }
+
 
         // Call this method from the main activity to shut down the connection.
         public void cancel() {

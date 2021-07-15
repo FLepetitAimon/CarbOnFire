@@ -6,17 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.MainActivity">
-
-    <Button
-        android:id="@+id/device_btn"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="0dp"
-        android:backgroundTint="@color/cardview_shadow_start_color"
-        android:padding="20dp"
-        android:text="Devices"
-        android:layout_marginBottom="10dp"/>
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp">
+
+        <ImageButton
+            android:id="@+id/device_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/btn_devices"
+            android:padding="20dp"
+            android:textColor="#AAAAAA" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:text="Devices"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,9 +49,11 @@
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="125dp"
             android:layout_marginLeft="4dp"
             android:src="@drawable/backpack"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
 
             ></ImageView>
 
@@ -68,7 +93,7 @@
             android:id="@+id/TextViewEtatDeConnexion"
             android:textSize="15dp"
             android:layout_marginTop="2dp"
-            android:text="Not Connected"
+            android:text="Disonnected"
             android:layout_below="@+id/DoubleFleche"
             ></TextView>
 
@@ -76,6 +101,7 @@
         </RelativeLayout>
 
         <ImageView
+            android:layout_marginTop="10dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/phone_item"
@@ -99,7 +125,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="30dp">
 
         <ImageView
             android:layout_width="80dp"
@@ -116,9 +142,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="32dp"
+            android:layout_marginTop="25dp"
             android:layout_toRightOf="@+id/logoCO"
             android:text="0 ppm"
-            android:textSize="50dp" />
+            android:textSize="30dp" />
 
     </RelativeLayout>
     <TextView
@@ -150,7 +177,8 @@
             android:layout_marginLeft="32dp"
             android:layout_toRightOf="@+id/logoCO2"
             android:text="0 ppm"
-            android:textSize="50dp"
+            android:layout_marginTop="25dp"
+            android:textSize="30dp"
             />
 
     </RelativeLayout>
@@ -183,7 +211,8 @@
             android:layout_marginLeft="32dp"
             android:layout_toRightOf="@+id/logoTemp"
         android:text="0 °C"
-        android:textSize="50dp"
+            android:layout_marginTop="25dp"
+        android:textSize="30dp"
         />
 
     </RelativeLayout>

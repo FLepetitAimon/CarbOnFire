@@ -28,6 +28,7 @@ import android.os.Message;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int REQUEST_CODE1 = 1;
     private int REQUEST_CODE2 ;
-    private Button deviceBtn ;
+    private ImageButton deviceBtn ;
     private boolean shouldShowRequestPermissionRationale = true;
 
     AnimatedVectorDrawable animationRotation;
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
                 connexionImageView.setImageResource(R.drawable.connectee_logo);
                 connexionImageView.clearAnimation();
-                afficheurEtatConnexion.setText("connected");
+                afficheurEtatConnexion.setText("Connected");
                 mmSocket= mmConnectThread.GetSocket();
 
                 mmConnectedThread = new MyBluetoothtService.ConnectedThread(mmSocket,mHandler);
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             if(msg.arg1==2){
                 connexionImageView.setImageResource(R.drawable.icone_deconnecter);
                 connexionImageView.clearAnimation();
-                afficheurEtatConnexion.setText("not connected");
+                afficheurEtatConnexion.setText("Disconnected");
                 afficheurNomDevice.setText("Connexion failed");
             }
 
@@ -94,10 +95,13 @@ public class MainActivity extends AppCompatActivity {
 
 
                NbBytesRecu = msg.getData().getInt("NombreBytesRecu");
+               if (NbBytesRecu+NbBytesRecu_aux < 1024) {
 
-                   for (int i = NbBytesRecu_aux; i < (NbBytesRecu_aux+NbBytesRecu); i++) {
-                       mmBuffer[i] = msg.getData().getByteArray("TrameBluetooth")[i-NbBytesRecu_aux];
+                   for (int i = NbBytesRecu_aux; i < (NbBytesRecu_aux + NbBytesRecu); i++) {
+                       mmBuffer[i] = msg.getData().getByteArray("TrameBluetooth")[i - NbBytesRecu_aux];
                    }
+               }
+               else mmBuffer = new byte[1024];
 
                trame = new String(mmBuffer);
                String SerieMesure[] = trame.split(",");
@@ -105,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
                    String Mesure[] = SerieMesure[SerieMesure.length-2].split(";");
                    if (Mesure.length>2) {
 
-                      afficheurCO.setText(Mesure[0]);
-                       afficheurCO2.setText(Mesure[1]);
-                       afficheurTemp.setText(Mesure[2]);
+                      afficheurCO.setText(Mesure[0] + "ppm");
+                       afficheurCO2.setText(Mesure[1] + "ppm");
+                       afficheurTemp.setText(Mesure[2] + "°C");
                        mmBuffer = new byte[1024];
                        NbBytesRecu_aux = 0;
 
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
            if (msg.arg1 == 3){
                connexionImageView.setImageResource(R.drawable.icone_deconnecter);
                connexionImageView.clearAnimation();
-               afficheurEtatConnexion.setText("not connected");
+               afficheurEtatConnexion.setText("Disconnected");
                afficheurNomDevice.setText("Connexion lost");
                mmConnectedThread.cancel();
            }
@@ -146,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        deviceBtn = (Button) findViewById(R.id.device_btn);
+        deviceBtn = (ImageButton) findViewById(R.id.device_btn);
         afficheurCO = (TextView) findViewById(R.id.AfficheurCO);
         afficheurCO2 = (TextView) findViewById(R.id.AfficheurCO2);
         afficheurTemp = (TextView) findViewById(R.id.AfficheurTemp);
@@ -207,17 +211,14 @@ public class MainActivity extends AppCompatActivity {
                         mmDevice = (BluetoothDevice) bundle.get("MyDEVICE");
 
                         connexionImageView.setImageResource(R.drawable.icone_chargement);
-                        connexionImageView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotation) );
-
+                        connexionImageView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotation));
 
                         afficheurEtatConnexion.setText("Connexion in progress ...");
                         afficheurNomDevice.setText(mmDevice.getName());
 
-                        mmConnectThread = new ConnectThread(mmDevice,mHandler);
+                        mmConnectThread = new ConnectThread(mmDevice, mHandler);
                         mmConnectThread.start();
-
                     }
-                    else if (result.getResultCode()==0) Toast.makeText(MainActivity.this, "aucun device selectionné", Toast.LENGTH_LONG).show();
                 }
 
 

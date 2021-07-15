@@ -110,7 +110,7 @@ public class ActivityDevice extends AppCompatActivity {
                         // There are no request codes
 
                             if (bluetoothAdapter.startDiscovery())
-                                Toast.makeText(ActivityDevice.this, "searching for device now", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ActivityDevice.this, "searching for devices", Toast.LENGTH_LONG).show();
                             else
                                 Toast.makeText(ActivityDevice.this, "Bluetooth device research failed", Toast.LENGTH_LONG).show();
 
