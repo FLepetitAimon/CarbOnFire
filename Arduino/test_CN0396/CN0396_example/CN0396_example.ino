@@ -2,6 +2,8 @@
 #include "Communication.h"
 #include "CN0396.h"
 
+float CO;
+
 void setup() {
   Serial.begin(9600);
   delay(1000);
@@ -15,6 +17,5 @@ void loop() {
   delay(DISPLAY_REFRESH);
   
   CN0396_SetAppData();
-  
   CN0396_DisplayData();
 }

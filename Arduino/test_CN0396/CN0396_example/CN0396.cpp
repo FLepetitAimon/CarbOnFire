@@ -101,6 +101,35 @@ void CN0396_DisplayData(void)
 }
 
 /******************************************************************************
+ * @brief return the concentration measure of CO and H2S with corection or not
+ *
+ * @param None.
+ *
+ * @return Float - for measure value for each gaz
+*******************************************************************************/
+
+float GetMeasurementCO_corected ()
+{
+	return result0[1];	
+}
+
+float GetMeasurementH2S_corected ()
+{
+	return result1[1];
+}
+
+float GetMeasurementCO ()
+{
+	return result0[0];	
+}
+
+float GetMeasurementH2S()
+{
+	return result1[0];
+}
+
+
+/******************************************************************************
  * @brief Convert ADC code into voltage value.
  *
  * @param adcValue - ADC code to convert.
