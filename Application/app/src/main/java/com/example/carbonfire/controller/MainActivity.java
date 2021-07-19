@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 connexionImageView.clearAnimation();
                 afficheurEtatConnexion.setText("Disconnected");
                 afficheurNomDevice.setText("Connexion failed");
+
+
             }
 
            if(msg.arg1==1){
@@ -109,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                    String Mesure[] = SerieMesure[SerieMesure.length-2].split(";");
                    if (Mesure.length>2) {
 
-                      afficheurCO.setText(Mesure[0] + "ppm");
-                       afficheurCO2.setText(Mesure[1] + "ppm");
-                       afficheurTemp.setText(Mesure[2] + "°C");
+                      afficheurCO.setText(Mesure[0] + " ppm");
+                       afficheurCO2.setText(Mesure[1] + " ppm");
+                       afficheurTemp.setText(Mesure[2] + " °C");
                        mmBuffer = new byte[1024];
                        NbBytesRecu_aux = 0;
 
@@ -132,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
                connexionImageView.clearAnimation();
                afficheurEtatConnexion.setText("Disconnected");
                afficheurNomDevice.setText("Connexion lost");
+               afficheurCO.setText("- ppm");
+               afficheurCO2.setText("- ppm");
+               afficheurTemp.setText("- °C");
                mmConnectedThread.cancel();
            }
 
