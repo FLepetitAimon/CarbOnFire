@@ -1,5 +1,5 @@
-int COPin = A0;  
-int CO2Pin = A1;              
+int COPin = A3;  
+int CO2Pin = A2;              
 float valCO = 0;  
 float valCO2 = 0;  
 float CO = 0;
