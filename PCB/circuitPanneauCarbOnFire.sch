@@ -132,13 +132,13 @@ Wire Wire Line
 $Comp
 L Connector:Screw_Terminal_01x14 J1
 U 1 1 60E6D455
-P 5250 2800
-F 0 "J1" V 5375 2746 50  0000 C CNN
-F 1 "Screw_Terminal_01x14" V 5466 2746 50  0000 C CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-14-5.08_1x14_P5.08mm_Horizontal" H 5250 2800 50  0001 C CNN
-F 3 "~" H 5250 2800 50  0001 C CNN
-	1    5250 2800
-	0    1    1    0   
+P 5050 2400
+F 0 "J1" V 5175 2346 50  0000 C CNN
+F 1 "Screw_Terminal_01x14" V 5266 2346 50  0000 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-14-5.08_1x14_P5.08mm_Horizontal" H 5050 2400 50  0001 C CNN
+F 3 "~" H 5050 2400 50  0001 C CNN
+	1    5050 2400
+	0    -1   -1   0   
 $EndComp
 Text GLabel 2000 2000 0    50   Input ~ 0
 SwitchIn1
@@ -348,33 +348,33 @@ Text GLabel 2150 1600 0    50   Input ~ 0
 VccIn
 Wire Wire Line
 	2150 2000 2150 1600
-Text GLabel 5450 2600 1    50   Input ~ 0
+Text GLabel 4850 2600 3    50   Input ~ 0
 Fusible2
-Text GLabel 5850 2600 1    50   Input ~ 0
+Text GLabel 4450 2600 3    50   Input ~ 0
 Fusible1
-Text GLabel 5250 2600 1    50   Input ~ 0
+Text GLabel 5050 2600 3    50   Input ~ 0
 SwitchOut2
-Text GLabel 5050 2600 1    50   Input ~ 0
+Text GLabel 5250 2600 3    50   Input ~ 0
 SwitchOut1
-Text GLabel 4850 2600 1    50   Input ~ 0
+Text GLabel 5450 2600 3    50   Input ~ 0
 AnoLedOut
-Text GLabel 5650 2600 1    50   Input ~ 0
+Text GLabel 4650 2600 3    50   Input ~ 0
 CatLedOut
-Text GLabel 4750 2600 1    50   Input ~ 0
+Text GLabel 5550 2600 3    50   Input ~ 0
 gndOut
-Text GLabel 5350 2600 1    50   Input ~ 0
+Text GLabel 4950 2600 3    50   Input ~ 0
 VccOut
-Text GLabel 5550 2600 1    50   Input ~ 0
+Text GLabel 4750 2600 3    50   Input ~ 0
 SwitchIn2
-Text GLabel 5150 2600 1    50   Input ~ 0
+Text GLabel 5150 2600 3    50   Input ~ 0
 SwitchIn1
-Text GLabel 4650 2600 1    50   Input ~ 0
+Text GLabel 5650 2600 3    50   Input ~ 0
 AnoLedIn
-Text GLabel 5750 2600 1    50   Input ~ 0
+Text GLabel 4550 2600 3    50   Input ~ 0
 CatLedIn
-Text GLabel 4550 2600 1    50   Input ~ 0
+Text GLabel 5750 2600 3    50   Input ~ 0
 gndIn
-Text GLabel 4950 2600 1    50   Input ~ 0
+Text GLabel 5350 2600 3    50   Input ~ 0
 VccIn
 Wire Wire Line
 	2450 2300 2700 2300
