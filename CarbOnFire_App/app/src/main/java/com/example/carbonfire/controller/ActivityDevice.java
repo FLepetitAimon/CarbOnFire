@@ -41,7 +41,7 @@ import static android.content.ContentValues.TAG;
 
 public class ActivityDevice extends AppCompatActivity {
 
-    // fields
+    // initialisation des objets
     ListView listViewBtDevice;
     List<BluetoothDevice> listBtDevice = new ArrayList<>();
     private  BluetoothDevice mmDevice;
@@ -53,12 +53,15 @@ public class ActivityDevice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
 
-        setResult(0);
+        setResult(0); // resultats par defaults si aucun appareil n'est sélectionné
 
+
+        // initialisation de l'affichage de la liste
 
         listViewBtDevice = (ListView) findViewById(R.id.DeviceList_id);
         listViewBtDevice.setAdapter(new DeviceItemAdapter(this, listBtDevice));
 
+        // Activation du bluetooth
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             Toast.makeText(ActivityDevice.this, "Bluetooth is not supported on this device", Toast.LENGTH_LONG).show();
@@ -75,15 +78,19 @@ public class ActivityDevice extends AppCompatActivity {
 
         else {
 
+            // recherche d'appareil bluetooth...
+
             if (bluetoothAdapter.startDiscovery())
                 Toast.makeText(ActivityDevice.this, "searching for device", Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(ActivityDevice.this, "Bluetooth device research failed", Toast.LENGTH_SHORT).show();
 
-
             IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(receiver, filter);
         }
+
+
+        // ------------  Selection d'un appareil de la liste  -----------------------------
 
         listViewBtDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -101,6 +108,9 @@ public class ActivityDevice extends AppCompatActivity {
 
     }
 
+
+
+    // gestion de la réponse d'activation du bluetooth
     ActivityResultLauncher<Intent> BtDiscoveryActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -125,7 +135,7 @@ public class ActivityDevice extends AppCompatActivity {
             });
 
 
-    // Create a BroadcastReceiver for ACTION_FOUND.
+    // Nouveau appareil disponible découvert
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -139,6 +149,8 @@ public class ActivityDevice extends AppCompatActivity {
 
 
     };
+
+    //fin de vie de l'activité
 
     @Override
     protected void onDestroy() {

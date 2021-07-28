@@ -28,10 +28,6 @@ public class ConnectThread extends Thread implements Runnable {
         mmDevice = device;
         mmhandler = handler;
 
-
-
-
-
         try {
             // Get a BluetoothSocket to connect with the given BluetoothDevice.
             // MY_UUID is the app's UUID string, also used in the server code.
