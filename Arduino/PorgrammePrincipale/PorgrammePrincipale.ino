@@ -127,16 +127,16 @@ void setup() {
 void loop() {
 
 
-// ------------ Vérification de la présence d'une carte SD et acquiqition des mesures du BMP ----------------------------
+// ------------ Vérification de la présence d'une carte SD --------------------------------------------------------------
 
   while (!SD.begin());
   
+
+// ------------ Acquisition des mesures dans un tableau TabMesure -------------------------------------------------------
+
   bmp280.getCurrentMeasurements(temperature, pressure, altitude);  
   RTC.readTime();
   
-
-// ------------ Sauvegarde des mesures dans un tableau TabMesure --------------------------------------------------------
-
   InitialiserTabMesure(Tab_Mesure);
 
   Tab_Mesure[0] = temperature;
