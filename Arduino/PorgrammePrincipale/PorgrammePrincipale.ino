@@ -102,16 +102,15 @@ void setup() {
  // ------------ Initialisation du port série et du capteur bmp280 ------------------------------------------------------
  
   Serial.begin(9600);
-  Serial.println("bonjour");
+  
   if (!bmp280.begin()) {Serial.println("failed to initialised bmp");}
-  Serial.println("bmp ready");
   bmp280.setTimeStandby(TIME_STANDBY_2000MS);     // Set the standby time to 2 seconds
-  bmp280.startNormalConversion();    
+  bmp280.startNormalConversion();  
+    
   if (!ads.begin()) {
     Serial.println("Failed to initialize ADS.");
     while (!ads.begin());
-  }// Start BMP280 continuous conversion in NORMAL_MODE
-
+  }
 
 // ------------ Préparation du fichier de mesure sur la carte SD --------------------------------------------------------
 
@@ -131,7 +130,8 @@ void loop() {
 // ------------ Vérification de la présence d'une carte SD et acquiqition des mesures du BMP ----------------------------
 
   while (!SD.begin());
-  bmp280.getCurrentMeasurements(temperature, pressure, altitude);  // Check if the measurement is complete
+  
+  bmp280.getCurrentMeasurements(temperature, pressure, altitude);  
   RTC.readTime();
   
 
