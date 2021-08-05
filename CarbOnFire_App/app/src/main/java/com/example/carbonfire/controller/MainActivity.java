@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 connexionImageView.setImageResource(R.drawable.connectee_logo);
                 connexionImageView.clearAnimation();
                 afficheurEtatConnexion.setText("Connected");
-                mmSocket= mmConnectThread.GetSocket();
 
+                mmSocket= mmConnectThread.GetSocket();
                 mmConnectedThread = new MyBluetoothtService.ConnectedThread(mmSocket,mHandler);
                 mmConnectedThread.start();
             }

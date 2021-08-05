@@ -67,19 +67,16 @@ public class ActivityDevice extends AppCompatActivity {
             Toast.makeText(ActivityDevice.this, "Bluetooth is not supported on this device", Toast.LENGTH_LONG).show();
         }
 
+
+
         if (!bluetoothAdapter.isEnabled()) {
+
             Intent BtDiscoveryActivity = new Intent (BluetoothAdapter.ACTION_REQUEST_ENABLE);
             BtDiscoveryActivityResultLauncher.launch(BtDiscoveryActivity);
         }
 
-
-
-
-
         else {
-
             // recherche d'appareil bluetooth...
-
             if (bluetoothAdapter.startDiscovery())
                 Toast.makeText(ActivityDevice.this, "searching for device", Toast.LENGTH_SHORT).show();
             else
@@ -88,6 +85,7 @@ public class ActivityDevice extends AppCompatActivity {
             IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(receiver, filter);
         }
+
 
 
         // ------------  Selection d'un appareil de la liste  -----------------------------
