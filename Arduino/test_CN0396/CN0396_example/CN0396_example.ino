@@ -2,20 +2,20 @@
 #include "Communication.h"
 #include "CN0396.h"
 
-float CO;
+float CO = 0;
 
 void setup() {
+  
   Serial.begin(9600);
   delay(1000);
-
   CN0396_Init();
 
 }
 
 void loop() {
-  
-  delay(DISPLAY_REFRESH);
-  
+
+  delay(500);
   CN0396_SetAppData();
-  CN0396_DisplayData();
+  CO = GetMeasurementCO();
+  Serial.println(CO);
 }
