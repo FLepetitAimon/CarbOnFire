@@ -87,6 +87,7 @@ void EnvoieBluetooth(double tab[TAILLE_TABLEAU]) {
   Serial.print(b);
   Serial.print(";");
   Serial.print(c);
+  
   Serial.print(",");
 }
 
