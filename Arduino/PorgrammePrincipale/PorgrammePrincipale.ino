@@ -12,9 +12,9 @@
 
 #define DATA_DIR "DONNEE"
 #define TAILLE_TABLEAU 11
-#define R_CO 100  //Resistance de Mesure du CO
+#define R_CO 95.5  //Resistance de Mesure du CO
 #define R_CO2 220 //Resistance de Mesure du CO2
-#define COPin 0   // Pin de lecture du CO
+#define COPin 3   // Pin de lecture du CO
 #define CO2Pin 1  // Pin de lecture du CO2
 #define PERIODE_ECHANTILLONAGE 500 // en millisecondes
 
@@ -137,7 +137,8 @@ void loop() {
 
   bmp280.getCurrentMeasurements(temperature, pressure, altitude);  
   RTC.readTime();
-  
+
+ 
   InitialiserTabMesure(Tab_Mesure);
 
   Tab_Mesure[0] = temperature;
