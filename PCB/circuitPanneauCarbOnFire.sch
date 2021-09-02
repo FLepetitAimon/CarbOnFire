@@ -201,28 +201,6 @@ F 3 "~" H 9900 3000 50  0001 C CNN
 	1    9900 3000
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Connector:4P4C J2
-U 1 1 60E96BCA
-P 8300 3500
-F 0 "J2" H 8357 3967 50  0000 C CNN
-F 1 "4P4C" H 8357 3876 50  0000 C CNN
-F 2 "Connector:NS-Tech_Grove_1x04_P2mm_Vertical" V 8300 3550 50  0001 C CNN
-F 3 "~" V 8300 3550 50  0001 C CNN
-	1    8300 3500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:4P4C J3
-U 1 1 60E97CCE
-P 8300 4300
-F 0 "J3" H 8357 4767 50  0000 C CNN
-F 1 "4P4C" H 8357 4676 50  0000 C CNN
-F 2 "Connector:NS-Tech_Grove_1x04_P2mm_Vertical" V 8300 4350 50  0001 C CNN
-F 3 "~" V 8300 4350 50  0001 C CNN
-	1    8300 4300
-	1    0    0    -1  
-$EndComp
 Text GLabel 10200 2800 1    50   Input ~ 0
 A1
 Text GLabel 10100 2800 1    50   Input ~ 0
@@ -399,5 +377,27 @@ F 2 "" H 4900 3900 50  0001 C CNN
 F 3 "" H 4900 3900 50  0001 C CNN
 	1    4900 3900
 	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:4P4C J3
+U 1 1 60E97CCE
+P 8300 4300
+F 0 "J3" H 8357 4767 50  0000 C CNN
+F 1 "4P4C" H 8357 4676 50  0000 C CNN
+F 2 "Connector:NS-Tech_Grove_1x04_P2mm_Vertical" V 8300 4350 50  0001 C CNN
+F 3 "~" V 8300 4350 50  0001 C CNN
+	1    8300 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:4P4C J2
+U 1 1 60E96BCA
+P 8300 3500
+F 0 "J2" H 8357 3967 50  0000 C CNN
+F 1 "4P4C" H 8357 3876 50  0000 C CNN
+F 2 "Connector:NS-Tech_Grove_1x04_P2mm_Vertical" V 8300 3550 50  0001 C CNN
+F 3 "~" V 8300 3550 50  0001 C CNN
+	1    8300 3500
+	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
