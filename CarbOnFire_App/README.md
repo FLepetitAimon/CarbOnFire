@@ -1,6 +1,6 @@
 # Application CarbOnFire
 ***
-## Focntionnalités
+## Fonctionnalités
 
 L'application CarbOnFire accompagne la prsie de mesure du système. Elle permet de visualiser en temps réel les valeurs de CO, de CO2, et de température mesurées par les capteurs. Elle utilise la connexion bluetooth du smartphone sur lequel elle est installée.
 
