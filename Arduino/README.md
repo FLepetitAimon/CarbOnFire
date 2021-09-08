@@ -26,4 +26,4 @@ Le programme RTC à pour but de régler la RTC. Il se peu qu'avec le temps, la R
 
 ## Programme CN0396
 
-Le programme CN0396 sert lire la mesure de CO effectuée par la carte Analog Device CN0396 équpé d'un capteur de CO, CO-CX. Le montage électrique est très simple, il suffit de monter la carte Analog Device sur une carte Arduino Uno et de téléverser le programme exemple. Si vous souhaitez utiliser la carte Analog avec un shield Sd, il vous faudra changer le pin CS du bus SPI d'une des deux cartes.
+Le programme CN0396Exemple sert lire la mesure de CO effectuée par la carte Analog Device CN0396 équpé d'un capteur de CO, CO-CX. La programme offre également la possibilité d'effectuer une correction en température. Le montage électrique est très simple, il suffit de monter la carte Analog Device sur une carte Arduino Uno et de téléverser le programme exemple. Si vous souhaitez utiliser la carte Analog avec un shield Sd, il vous faudra changer le pin CS du bus SPI d'une des deux cartes.

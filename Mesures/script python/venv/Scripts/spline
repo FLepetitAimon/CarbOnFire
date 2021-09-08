@@ -1,5 +1,0 @@
-#!C:\Users\Public\github\CarbOnFire\Mesures\étalonnage 22-07-21\dossier python\venv\Scripts\python.exe
-from spline.application import main
-
-if __name__ == "__main__":
-    main()
