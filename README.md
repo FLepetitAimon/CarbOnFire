@@ -1,7 +1,7 @@
 # Système CarbOnFire
 ***
 ## Contexte 
-Le projet a été réaliser entre juin et aout 2021 au laboratoire d'aérologie de Toulouse, dans le cadre d'un stage de 4é année d'école d'ingénieur. La stage a été fait par François LEPETIT-AIMON et tutoré par Jean-François LEON. Si vous désirez des informations suplémentaire sur le projet, n'hésitez à contacter François LEPETIT-AIMON à l'adresse mail: francois.lepetitaimon@gmail.com
+Le projet a été réalisé entre juin et aout 2021 au laboratoire d'aérologie de Toulouse, dans le cadre d'un stage de 4é année d'école d'ingénieur. La stage a été fait par François LEPETIT-AIMON et tutoré par Jean-François LEON. Si vous désirez des informations suplémentaires sur le projet, n'hésitez à contacter François LEPETIT-AIMON à l'adresse mail: francois.lepetitaimon@gmail.com
 
 ## Présentation du projet
 
@@ -13,7 +13,7 @@ CarbOnFire est un système qui permet d’analyser la composition de fumées iss
 
 ## Etat de fonctionnement du système
 
-A l'issue des trois mois de dévellopement, le premier prototype du système est en état de marche. Il fait l'acquisition des mesures de CO, CO2, température et pression. Il enregistre les données sur une carte SD et transmet la mesure les mesure de CO, CO2 et température vers une application android. L'ensemble du système est intégré sur un sac à dos. Les mesures réaliser en laboratoire et en conditions reélles ont permis de caractérisé la qualité des mesures de gaz. Il en ressort qu la précision obtenue est insuffisante et qu'il faut l'améliorer. Le détail des mesures et de leur analyse est décrit dans la fiche technique du Projet.
+A l'issue des trois mois de dévellopement, le premier prototype du système est en état de marche. Il fait l'acquisition des mesures de CO, CO2, température et pression. Il enregistre les données sur une carte SD et transmet les mesure de CO, CO2 et température vers une application android. L'ensemble du système est intégré sur un sac à dos. Les mesures réalisées en laboratoire et en conditions reélles ont permis de caractériser la qualité des mesures de gaz. Il en ressort qu la précision obtenue est insuffisante et qu'il faut l'améliorer. Le détail des mesures et de leur analyse est décrit dans la fiche technique du Projet.
 
 ## Contenu du Github
 
