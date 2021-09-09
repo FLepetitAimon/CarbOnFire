@@ -108,12 +108,12 @@ void CN0396_DisplayData(void)
  * @return Float - for measure value for each gaz
 *******************************************************************************/
 
-float GetMeasurementCO_corected ()
+float GetMeasurementCO_corrected ()
 {
 	return result0[1];	
 }
 
-float GetMeasurementH2S_corected ()
+float GetMeasurementH2S_corrected ()
 {
 	return result1[1];
 }
@@ -291,4 +291,3 @@ float CN0396_CompensatePPM(float resultIn, float temp, sensor_type_t sensor)
 
     return resultOut;
 }
-

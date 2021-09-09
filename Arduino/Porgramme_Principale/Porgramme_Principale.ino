@@ -12,6 +12,7 @@
 
 #define DATA_DIR "DONNEE"
 #define TAILLE_TABLEAU 11
+
 #define R_CO 99  //Resistance de Mesure du CO
 #define R_CO2 220 //Resistance de Mesure du CO2
 #define COPin 0   // Pin de lecture du CO
@@ -32,24 +33,36 @@ BMP280_DEV bmp280;   // Instantiate (create) a BMP280_DEV object and set-up for 
 
 //Fonctions
 
+//***********************************************
+//* renvoie la mesure de CO instantannée en ppm *
+//***********************************************
+
 float ConcentrationCO() {
   
-  //transforme la mesure analogique en une valeur de ppm
-  float mesure = ads.computeVolts(ads.readADC_SingleEnded(COPin));
+  float mesure = ads.computeVolts(ads.readADC_SingleEnded(COPin));   
   float mCO = 0;
-  mCO = (mesure / R_CO - 0.004) * (5000 / 0.016);
+  mCO = (mesure / R_CO - 0.004) * (5000 / 0.016);  //transforme la mesure analogique en une valeur en ppm
   return mCO;
 }
+
+
+//***********************************************
+//* renvoie la mesure de CO2 instantannée en ppm *
+//***********************************************
 
 float ConcentrationCO2() {
   
   //transforme la mesure analogique en une valeur de ppm
   float mesure = ads.computeVolts(ads.readADC_SingleEnded(CO2Pin));;
   float mCO2 = 0;
-  mCO2 = (mesure/ R_CO2 - 0.004) * (5000 / 0.016);
+  mCO2 = (mesure/ R_CO2 - 0.004) * (5000 / 0.016); //transforme la mesure analogique en une valeur en ppm
   return mCO2;
 }
 
+
+//******************************************************
+//* Initialise le tableau passé en argument avec des 0 *
+//******************************************************
 
 void InitialiserTabMesure(double Tab[TAILLE_TABLEAU]) {
   for (int i = 0; i < TAILLE_TABLEAU; i++) {
@@ -57,6 +70,10 @@ void InitialiserTabMesure(double Tab[TAILLE_TABLEAU]) {
   }
 }
 
+
+//****************************************************
+//* Ecrit les mesures dans le fichier de la carte SD *
+//****************************************************
 
 void EcritureCarteSD(double Tab[TAILLE_TABLEAU]) {
   donnee = SD.open("DONNEE/Data.txt", FILE_WRITE);
@@ -78,6 +95,10 @@ void EcritureCarteSD(double Tab[TAILLE_TABLEAU]) {
   donnee.close();
 }
 
+
+//******************************************
+//* Transmisiion des mesures via bluetooth *
+//******************************************
 
 void EnvoieBluetooth(double tab[TAILLE_TABLEAU]) {
   float a, b, c;

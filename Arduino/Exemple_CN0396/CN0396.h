@@ -76,8 +76,8 @@ extern void CN0396_Init(void);
 extern void CN0396_DisplayData(void);
 extern float GetMeasurementCO(void);
 extern float GetMeasurementH2S (void);
-extern float GetMeasurementCO_corected (void);
-extern float GetMeasurementH2S_corected (void);
+extern float GetMeasurementCO_corrected (void);
+extern float GetMeasurementH2S_corrected (void);
 extern void CN0396_ConvertToVoltage(uint16_t adcValue, float *voltage);
 extern void CN0396_SetAppData(void);
 extern float CN0396_GetFeedbackResistor(float sensitivity, float range);
@@ -114,4 +114,3 @@ extern void CN0396_ConfigureFeedbackResistors(float resistance1, float resistanc
 #endif // __cplusplus
 
 #endif /* CN0396_H_ */
-
